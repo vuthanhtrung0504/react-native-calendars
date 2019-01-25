@@ -115,7 +115,7 @@ class CalendarList extends Component {
       this.props.onLayout(event);
     }
     if (this.props.scrollingEnabled) {
-      if (Platform.OS === 'android' && this.state.addMarginTop !== 0) {
+      if (Platform.OS === 'android') {
         this.setState({ addMarginTop: 0 });
       }
     }
