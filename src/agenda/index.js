@@ -5,8 +5,6 @@ import {
   Dimensions,
   Animated,
   ViewPropTypes,
-  Platform,
-  PixelRatio
 } from 'react-native';
 import PropTypes from 'prop-types';
 import XDate from 'xdate';
@@ -17,14 +15,6 @@ import CalendarList from '../calendar-list';
 import ReservationsList from './reservation-list';
 import styleConstructor from './style';
 import { VelocityTracker } from '../input';
-
-const { height } = Dimensions.get('window');
-
-const ratio = Math.min(PixelRatio.get(), 3);
-
-const baseSize = (0.85 * height * 3 * 0.67) / (570 * ratio);
-
-const responsiveHeight = (h) => PixelRatio.getPixelSizeForLayoutSize(h) * baseSize * 0.55;
 
 const HEADER_HEIGHT = 104;
 const KNOB_HEIGHT = 24;
@@ -401,7 +391,7 @@ export default class AgendaView extends Component {
           {this.renderReservations()}
         </View>
         <Animated.View style={headerStyle}>
-          <Animated.View style={{ flex: 1, marginTop: Platform.select({ android: responsiveHeight(60), ios: 0 }), transform: [{ translateY: contentTranslate }] }}>
+          <Animated.View style={{ flex: 1, transform: [{ translateY: contentTranslate }] }}>
             <CalendarList
               onLayout={() => {
                 this.calendar.scrollToDay(this.state.selectedDay.clone(), this.calendarOffset(), false);

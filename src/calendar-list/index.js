@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  FlatList, Platform, Dimensions,
+  FlatList, Platform, Dimensions
 } from 'react-native';
 import PropTypes from 'prop-types';
 import XDate from 'xdate';
@@ -96,7 +96,8 @@ class CalendarList extends Component {
     this.state = {
       rows,
       texts,
-      openDate: date
+      openDate: date,
+      addMarginTop: 0,
     };
   }
 
@@ -112,6 +113,11 @@ class CalendarList extends Component {
   onLayout(event) {
     if (this.props.onLayout) {
       this.props.onLayout(event);
+    }
+    if (this.props.scrollingEnabled) {
+      if (Platform.OS === 'android' && this.state.addMarginTop !== 0) {
+        this.setState({ addMarginTop: 0 });
+      }
     }
   }
 
@@ -133,7 +139,17 @@ class CalendarList extends Component {
       }
     }
 
-    this.listView.scrollToOffset({ offset: scrollAmount, animated });
+    if (Platform.OS === 'android') {
+      if (scrollAmount < 0) {
+        this.setState({ addMarginTop: Math.abs(scrollAmount) });
+      } else {
+        this.setState({ addMarginTop: 0 });
+        this.listView.scrollToOffset({ offset: scrollAmount, animated });
+      }
+    }
+    if (Platform.OS === 'ios') {
+      this.listView.scrollToOffset({ offset: scrollAmount, animated });
+    }
   }
 
   scrollToMonth(m) {
@@ -210,7 +226,7 @@ class CalendarList extends Component {
       <FlatList
         onLayout={this.onLayout}
         ref={(c) => this.listView = c}
-        style={[this.style.container, this.props.style]}
+        style={[this.style.container, this.props.style, { marginTop: this.state.addMarginTop }]}
         initialNumToRender={this.pastScrollRange + this.futureScrollRange + 1}
         data={this.state.rows}
         removeClippedSubviews={this.props.removeClippedSubviews !== undefined ? this.props.removeClippedSubviews : (Platform.OS === 'android' ? false : true)}
