@@ -141,6 +141,7 @@ class CalendarList extends Component {
 
     if (Platform.OS === 'android') {
       if (scrollAmount < 0) {
+        this.listView.scrollToOffset({ offset: 0, animated });
         this.setState({ addMarginTop: Math.abs(scrollAmount) });
       } else {
         this.setState({ addMarginTop: 0 });
