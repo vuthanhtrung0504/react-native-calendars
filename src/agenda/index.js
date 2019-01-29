@@ -5,6 +5,7 @@ import {
   Dimensions,
   Animated,
   ViewPropTypes,
+  FlatList,
 } from 'react-native';
 import PropTypes from 'prop-types';
 import XDate from 'xdate';
@@ -273,25 +274,38 @@ export default class AgendaView extends Component {
   }
 
   renderReservations() {
-    return (
-      <ReservationsList
+    const data = this.props.items[this.state.selectedDay.toString('yyyy-MM-dd')];
+    return this.props.flatList ? (
+      <FlatList
         refreshControl={this.props.refreshControl}
         refreshing={this.props.refreshing}
         onRefresh={this.props.onRefresh}
-        rowHasChanged={this.props.rowHasChanged}
+        keyExtractor={(item, index) => index.toString()}
         renderItem={this.props.renderItem}
-        renderDay={this.props.renderDay}
-        renderEmptyDate={this.props.renderEmptyDate}
-        reservations={this.props.items}
-        selectedDay={this.state.selectedDay}
-        renderEmptyData={this.props.renderEmptyData}
-        topDay={this.state.topDay}
-        onDayChange={this.onDayChange.bind(this)}
-        onScroll={() => { }}
-        ref={(c) => this.list = c}
-        theme={this.props.theme}
+        data={data}
+        ListEmptyComponent={this.props.renderEmptyData}
+        {...this.props}
       />
-    );
+    )
+      : (
+        <ReservationsList
+          refreshControl={this.props.refreshControl}
+          refreshing={this.props.refreshing}
+          onRefresh={this.props.onRefresh}
+          rowHasChanged={this.props.rowHasChanged}
+          renderItem={this.props.renderItem}
+          renderDay={this.props.renderDay}
+          renderEmptyDate={this.props.renderEmptyDate}
+          reservations={this.props.items}
+          selectedDay={this.state.selectedDay}
+          renderEmptyData={this.props.renderEmptyData}
+          topDay={this.state.topDay}
+          onDayChange={this.onDayChange.bind(this)}
+          onScroll={() => { }}
+          ref={(c) => this.list = c}
+          theme={this.props.theme}
+        />
+      );
   }
 
   onDayChange(day) {
