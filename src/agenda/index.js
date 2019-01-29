@@ -280,7 +280,6 @@ export default class AgendaView extends Component {
         refreshControl={this.props.refreshControl}
         refreshing={this.props.refreshing}
         onRefresh={this.props.onRefresh}
-        keyExtractor={(item, index) => index.toString()}
         renderItem={this.props.renderItem}
         data={data}
         ListEmptyComponent={this.props.renderEmptyData}
