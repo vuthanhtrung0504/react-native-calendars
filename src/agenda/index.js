@@ -275,15 +275,11 @@ export default class AgendaView extends Component {
 
   renderReservations() {
     const data = this.props.items[this.state.selectedDay.toString('yyyy-MM-dd')];
-    return this.props.flatList ? (
+    return this.props.flatListProps ? (
       <FlatList
-        refreshControl={this.props.refreshControl}
-        refreshing={this.props.refreshing}
-        onRefresh={this.props.onRefresh}
-        renderItem={this.props.renderItem}
         data={data}
         ListEmptyComponent={this.props.renderEmptyData}
-        {...this.props}
+        {...this.props.flatListProps}
       />
     )
       : (
@@ -435,7 +431,7 @@ export default class AgendaView extends Component {
           {knob}
         </Animated.View>
         <Animated.View style={weekdaysStyle}>
-          {this.props.showWeekNumbers && <Text allowFontScaling={false} style={this.styles.weekday} numberOfLines={1}></Text>}
+          {this.props.showWeekNumbers && <Text allowFontScaling={false} style={this.styles.weekday} numberOfLines={1} />}
           {weekDaysNames.map((day, index) => (
             <Text allowFontScaling={false} key={day + index} style={this.styles.weekday} numberOfLines={1}>{day}</Text>
           ))}
