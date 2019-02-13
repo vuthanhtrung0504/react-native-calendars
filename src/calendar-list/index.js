@@ -115,9 +115,7 @@ class CalendarList extends Component {
       this.props.onLayout(event);
     }
     if (this.props.scrollingEnabled) {
-      if (Platform.OS === 'android') {
-        this.setState({ addMarginTop: 0 });
-      }
+      this.setState({ addMarginTop: 0 });
     }
   }
 
@@ -139,16 +137,11 @@ class CalendarList extends Component {
       }
     }
 
-    if (Platform.OS === 'android') {
-      if (scrollAmount < 0) {
-        this.listView.scrollToOffset({ offset: 0, animated });
-        this.setState({ addMarginTop: Math.abs(scrollAmount) });
-      } else {
-        this.setState({ addMarginTop: 0 });
-        this.listView.scrollToOffset({ offset: scrollAmount, animated });
-      }
-    }
-    if (Platform.OS === 'ios') {
+    if (scrollAmount < 0) {
+      this.listView.scrollToOffset({ offset: 0, animated });
+      this.setState({ addMarginTop: Math.abs(scrollAmount) });
+    } else {
+      this.setState({ addMarginTop: 0 });
       this.listView.scrollToOffset({ offset: scrollAmount, animated });
     }
   }
