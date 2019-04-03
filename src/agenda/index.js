@@ -378,7 +378,7 @@ export default class AgendaView extends Component {
     const scrollPadStyle = {
       position: 'absolute',
       width: 80,
-      height: KNOB_HEIGHT,
+      height: 5,
       top: scrollPadPosition,
       left: (this.viewWidth - 80) / 2,
     };
@@ -453,7 +453,7 @@ export default class AgendaView extends Component {
             { useNativeDriver: true },
           )}
         >
-          {/* <View style={{ height: agendaHeight + KNOB_HEIGHT }} onLayout={this.onScrollPadLayout} /> */}
+          <View style={{ height: agendaHeight }} onLayout={this.onScrollPadLayout} />
         </Animated.ScrollView>
       </View>
     );
