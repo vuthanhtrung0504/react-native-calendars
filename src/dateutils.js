@@ -41,10 +41,10 @@ function month(xd) {
 }
 
 function weekDayNames(firstDayOfWeek = 0) {
-  let weekDaysNames = XDate.locales[XDate.defaultLocale].dayNamesShort;
+  let weekDaysNames = XDate.locales[XDate.defaultLocale].dayNamesShort.slice(0, 1);
   const dayShift = firstDayOfWeek % 7;
   if (dayShift) {
-    weekDaysNames = weekDaysNames.slice(1).concat(weekDaysNames.slice(0, 1));
+    weekDaysNames = weekDaysNames.slice(dayShift).concat(weekDaysNames.slice(0, dayShift));
   }
   return weekDaysNames;
 }
