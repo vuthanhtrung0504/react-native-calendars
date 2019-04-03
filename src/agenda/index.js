@@ -17,7 +17,7 @@ import ReservationsList from './reservation-list';
 import styleConstructor from './style';
 import { VelocityTracker } from '../input';
 
-const HEADER_HEIGHT = 104;
+const HEADER_HEIGHT = 80;
 const KNOB_HEIGHT = 24;
 
 //Fallback when RN version is < 0.44
@@ -453,7 +453,7 @@ export default class AgendaView extends Component {
             { useNativeDriver: true },
           )}
         >
-          <View style={{ height: agendaHeight }} onLayout={this.onScrollPadLayout} />
+          <View style={{ height: agendaHeight + KNOB_HEIGHT }} onLayout={this.onScrollPadLayout} />
         </Animated.ScrollView>
       </View>
     );
