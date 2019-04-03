@@ -14,7 +14,7 @@ export default function styleConstructor(theme = {}) {
       overflow: 'hidden',
       justifyContent: 'flex-end',
       position:'absolute',
-      height:'80%',
+      height:'100%',
       width:'100%',
     },
     calendar: {

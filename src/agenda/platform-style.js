@@ -16,7 +16,7 @@ export default function platformStyles(appStyle) {
       justifyContent: 'space-between',
       paddingLeft: 24,
       paddingRight: 24,
-      paddingTop: 15,
+      paddingTop: 7,
       paddingBottom: 7,
       backgroundColor: appStyle.calendarBackground
     },
