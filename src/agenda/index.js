@@ -378,7 +378,7 @@ export default class AgendaView extends Component {
     const scrollPadStyle = {
       position: 'absolute',
       width: 80,
-      height: 1,
+      height: KNOB_HEIGHT,
       top: scrollPadPosition,
       left: (this.viewWidth - 80) / 2,
     };
@@ -396,9 +396,7 @@ export default class AgendaView extends Component {
 
     return (
       <View onLayout={this.onLayout} style={[this.props.style, { flex: 1, overflow: 'hidden' }]}>
-        <View style={this.styles.reservations}>
-          {this.renderReservations()}
-        </View>
+        
         <Animated.View style={headerStyle}>
           <Animated.View style={{ flex: 1, transform: [{ translateY: contentTranslate }] }}>
             <CalendarList
@@ -436,6 +434,9 @@ export default class AgendaView extends Component {
             <Text allowFontScaling={false} key={day + index} style={this.styles.weekday} numberOfLines={1}>{day}</Text>
           ))}
         </Animated.View>
+        <View style={this.styles.reservations}>
+          {this.renderReservations()}
+        </View>
         <Animated.ScrollView
           ref={c => this.scrollPad = c}
           overScrollMode='never'
