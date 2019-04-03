@@ -40,6 +40,7 @@ export default function styleConstructor(theme = {}) {
       height: 0,
       bottom: 0,
       alignItems: 'center',
+      backgroundColor: appStyle.calendarBackground
     },
     weekday: {
       width: 32,
@@ -50,7 +51,8 @@ export default function styleConstructor(theme = {}) {
     reservations: {
       flex: 1,
       marginTop: 104,
-      backgroundColor: appStyle.backgroundColor
+      backgroundColor: "red"
+      // backgroundColor: appStyle.backgroundColor
     },
     ...(theme[STYLESHEET_ID] || {})
   });

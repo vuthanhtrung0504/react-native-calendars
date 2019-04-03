@@ -430,12 +430,12 @@ export default class AgendaView extends Component {
           </Animated.View>
           {knob}
         </Animated.View>
-        {/* <Animated.View style={weekdaysStyle}>
+        <Animated.View style={weekdaysStyle}>
           {this.props.showWeekNumbers && <Text allowFontScaling={false} style={this.styles.weekday} numberOfLines={1} />}
           {weekDaysNames.map((day, index) => (
             <Text allowFontScaling={false} key={day + index} style={this.styles.weekday} numberOfLines={1}>{day}</Text>
           ))}
-        </Animated.View> */}
+        </Animated.View>
         <Animated.ScrollView
           ref={c => this.scrollPad = c}
           overScrollMode='never'
