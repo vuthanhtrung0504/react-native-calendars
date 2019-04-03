@@ -428,7 +428,7 @@ export default class AgendaView extends Component {
               showWeekNumbers={this.props.showWeekNumbers}
             />
           </Animated.View>
-          {/* {knob} */}
+          {knob}
         </Animated.View>
         <Animated.View style={weekdaysStyle}>
           {this.props.showWeekNumbers && <Text allowFontScaling={false} style={this.styles.weekday} numberOfLines={1} />}
