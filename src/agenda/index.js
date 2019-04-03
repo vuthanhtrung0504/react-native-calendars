@@ -453,7 +453,7 @@ export default class AgendaView extends Component {
             { useNativeDriver: true },
           )}
         >
-          <View style={{ height: agendaHeight + {this.props.hideKnob ? 0 : KNOB_HEIGHT} }} onLayout={this.onScrollPadLayout} />
+          <View style={{ height: agendaHeight + KNOB_HEIGHT }} onLayout={this.onScrollPadLayout} />
         </Animated.ScrollView>
       </View>
     );
