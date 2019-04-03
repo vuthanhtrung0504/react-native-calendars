@@ -32,6 +32,15 @@ export default function styleConstructor(theme = {}) {
       alignItems: 'center',
       backgroundColor: appStyle.calendarBackground
     },
+    knobContainerHide: {
+      flex: 1,
+      position: 'absolute',
+      left: 0,
+      right: 0,
+      height: 0,
+      bottom: 0,
+      alignItems: 'center',
+    },
     weekday: {
       width: 32,
       textAlign: 'center',
